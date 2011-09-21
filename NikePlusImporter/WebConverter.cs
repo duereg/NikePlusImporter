@@ -15,12 +15,17 @@ namespace Import.NikePlus
     /// </summary>
     public class WebConverter
     {
+        private CookieCollection Cookies { get; set;} 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebConverter"/> class.
         /// </summary>
-        public WebConverter()
-        { 
+        public WebConverter(string username, string password)
+        {
+            Contract.Assert(!string.IsNullOrWhiteSpace(username), "username is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(password), "password is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(Configuration.AUTHENTICATION_URL), "url is invalid");
 
+            Cookies = Authenticate(username, password);
         }
 
         /// <summary>
@@ -30,20 +35,33 @@ namespace Import.NikePlus
         /// <param name="password">The password.</param>
         /// <param name="url">The URL.</param>
         /// <returns></returns>
-        public IEnumerable<Workout> Convert(string username, string password)
+        public IEnumerable<Workout> GetAllWorkouts()
         {
-            Contract.Assert(!string.IsNullOrWhiteSpace(username), "username is invalid");
-            Contract.Assert(!string.IsNullOrWhiteSpace(username), "password is invalid");
-            Contract.Assert(!string.IsNullOrWhiteSpace(username), "url is invalid");
-
-            var cookies = Authenticate(username, password);
-            IEnumerable<long> workoutKeys = GetWorkouts(cookies);
+            IEnumerable<long> workoutKeys = GetWorkoutIDs();
             foreach (var key in workoutKeys)
             {
-                var fileContents = GetWorkoutXml(cookies, key);
-                var xmlConverter = new FileConverter(fileContents);
-                yield return xmlConverter.Convert();
+                yield return GetWorkout(key);
             }
+        }
+
+        public Workout GetWorkout(long key)
+        {
+            var fileContents = GetWorkoutXml(key);
+            var xmlConverter = new FileConverter(fileContents);
+            return xmlConverter.Convert();
+        }
+
+        public IEnumerable<long> GetWorkoutIDs()
+        {
+            Contract.Assert(Cookies != null, "Cookie Collection is invalid");
+
+            var request = WebRequest.Create(GetUrl(Configuration.GET_WORKOUTS_LIST_URL)) as HttpWebRequest ;
+            var container = new CookieContainer();
+            container.Add(Cookies);
+            request.CookieContainer = container;
+            var xmlDoc = GetXmlDocument(request);
+
+            return ProcessWorkouts(xmlDoc);
         }
 
         private CookieCollection Authenticate(string userName, string password)
@@ -65,19 +83,6 @@ namespace Import.NikePlus
             }
 
             return retCookies;
-        }
-
-        private IEnumerable<long> GetWorkouts(CookieCollection cookies)
-        {
-            Contract.Assert(cookies != null, "Cookie Collection is invalid");
-
-            var request = WebRequest.Create(GetUrl(Configuration.GET_WORKOUTS_LIST_URL)) as HttpWebRequest ;
-            var container = new CookieContainer();
-            container.Add(cookies);
-            request.CookieContainer = container;
-            var xmlDoc = GetXmlDocument(request);
-
-            return ProcessWorkouts(xmlDoc);
         }
 
         /// <summary>
@@ -116,12 +121,12 @@ namespace Import.NikePlus
             }
         }
 
-        private string GetWorkoutXml(CookieCollection cookies, long key)
+        private string GetWorkoutXml(long key)
         {
             var url = GetUrl(string.Format(Configuration.GET_WORKOUT_DETAILS_URL, key));
             var request = WebRequest.Create(url) as HttpWebRequest;
             var container = new CookieContainer();
-            container.Add(cookies);
+            container.Add(Cookies);
             request.CookieContainer = container;
             var xmlDoc = GetXmlDocument(request);
             return xmlDoc.ToString();

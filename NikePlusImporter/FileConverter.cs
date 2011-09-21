@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using Import.NikePlus.Entities;
+using Maximum.Helper;
 
 namespace Import.NikePlus
 {
@@ -12,6 +13,13 @@ namespace Import.NikePlus
     /// </summary>
     public class FileConverter
     {
+        private const string WOKROUT_NAME_KEY = "/plusService/sportsData/runSummary/workoutName";
+        private const string COMMENTS_KEY = "/plusService/sportsData/runSummary/comments";
+        private const string EVENT_DATE_KEY = "/plusService/sportsData/runSummary/time";
+        private const string DISTANCE_KEY = "/plusService/sportsData/runSummary/distance";
+        private const string DURATION_KEY = "/plusService/sportsData/runSummary/duration";
+        private const string CALORIES_KEY = "/plusService/sportsData/runSummary/calories";
+    
         protected string FileContents{ get; set; }
 
         /// <summary>
@@ -56,25 +64,38 @@ namespace Import.NikePlus
             var workFromFile = new Workout();
             var nikePlusDocument = new XmlDocument();
             nikePlusDocument.LoadXml(this.FileContents);
-            
-            workFromFile.Name = GetValue<String>(nikePlusDocument, "/sportsData/runSummary/workoutName");
-            workFromFile.Comments = GetValue<String>(nikePlusDocument, "/sportsData/runSummary/comments");
-            workFromFile.EventDate = GetValue<DateTime>(nikePlusDocument, "/sportsData/runSummary/time");
-            workFromFile.Distance = GetValue<int>(nikePlusDocument, "/sportsData/runSummary/distance");
-            workFromFile.Duration = GetValue<int>(nikePlusDocument, "/sportsData/runSummary/duration");
-            workFromFile.Calories = GetValue<short>(nikePlusDocument, "/sportsData/runSummary/calories"); 
+
+            workFromFile.Name = GetValue<String>(nikePlusDocument, WOKROUT_NAME_KEY, "Workout");
+            workFromFile.Comments = GetValue<String>(nikePlusDocument, COMMENTS_KEY);
+            workFromFile.EventDate = GetValue<DateTime>(nikePlusDocument, EVENT_DATE_KEY);
+            workFromFile.Distance = GetValue<float>(nikePlusDocument, DISTANCE_KEY);
+            workFromFile.Duration = GetValue<int>(nikePlusDocument, DURATION_KEY);
+            workFromFile.Calories = GetValue<short>(nikePlusDocument, CALORIES_KEY); 
 
             return workFromFile;
         }
 
-        private T GetValue<T>(XmlDocument xmlDoc, string xPath){
-            T value = default(T);
+        private T GetValue<T>(XmlDocument xmlDoc, string xPath, T defaultValue = default(T) ){
+            T value = defaultValue;
 
             var node = xmlDoc.SelectSingleNode(xPath);
 
             if(node != null){ 
-                var values = node.Cast<T>();
-                value = values.FirstOrDefault();
+                value = StringParser.Convert<T>(node.Value);
+            }
+
+            return value;
+        }
+
+        private T GetAttributeValue<T>(XmlDocument xmlDoc, string xPath, string attributeName)
+        {
+            T value = default(T);
+
+            var node = xmlDoc.SelectSingleNode(xPath);
+
+            if (node != null)
+            {
+                value = StringParser.Convert<T>(node.Attributes[attributeName].Value);
             }
 
             return value;
