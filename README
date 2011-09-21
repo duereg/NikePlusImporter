@@ -1,1 +1,3 @@
 A Nike+ Data Importer, used to import data from their website into a .NET Project. 
+
+Written in C#, using .NET 4.0
