@@ -7,6 +7,8 @@ using System.Net;
 using System.Diagnostics.Contracts;
 using System.IO;
 using System.Xml;
+using Import.NikePlus.Properties;
+using Maximum.Extensions;
 
 namespace Import.NikePlus
 {
@@ -15,7 +17,8 @@ namespace Import.NikePlus
     /// </summary>
     public class WebConverter
     {
-        private CookieCollection Cookies { get; set;} 
+        private CookieCollection Cookies { get; set;}
+        private static Settings Configuration = (Settings) Settings.Synchronized(Settings.Default);
         /// <summary>
         /// Initializes a new instance of the <see cref="WebConverter"/> class.
         /// </summary>
@@ -55,7 +58,7 @@ namespace Import.NikePlus
         {
             Contract.Assert(Cookies != null, "Cookie Collection is invalid");
 
-            var request = WebRequest.Create(GetUrl(Configuration.GET_WORKOUTS_LIST_URL)) as HttpWebRequest ;
+            var request = WebRequest.Create(Configuration.GET_WORKOUTS_LIST_URL) as HttpWebRequest ;
             var container = new CookieContainer();
             container.Add(Cookies);
             request.CookieContainer = container;
@@ -68,13 +71,13 @@ namespace Import.NikePlus
         {
             CookieCollection retCookies = null;
 
-            var url = String.Format(GetUrl(Configuration.AUTHENTICATION_URL), userName, password);
+            var url = String.Format(Configuration.AUTHENTICATION_URL, userName, password);
             var request = WebRequest.Create(url) as HttpWebRequest;
 
             // Set some reasonable limits on resources used by this request
-            request.MaximumAutomaticRedirections = 4;
-            request.MaximumResponseHeadersLength = 4;
-            request.Credentials = CredentialCache.DefaultCredentials;
+            //request.MaximumAutomaticRedirections = 4;
+            //request.MaximumResponseHeadersLength = 4;
+            //request.Credentials = CredentialCache.DefaultCredentials;
 
             using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
             {
@@ -123,7 +126,7 @@ namespace Import.NikePlus
 
         private string GetWorkoutXml(long key)
         {
-            var url = GetUrl(string.Format(Configuration.GET_WORKOUT_DETAILS_URL, key));
+            var url = string.Format(Configuration.GET_WORKOUT_DETAILS_URL, key);
             var request = WebRequest.Create(url) as HttpWebRequest;
             var container = new CookieContainer();
             container.Add(Cookies);
@@ -132,20 +135,6 @@ namespace Import.NikePlus
             return xmlDoc.ToString();
         }
          
-        private string GetUrl(string origUrl)
-        {
-            string url;
-            if (origUrl.Contains('?'))
-            {
-                url = origUrl + "&";
-            }
-            else
-            {
-                url = origUrl + "?";
-            }
-            return url;
-        }
-
         /// <summary>
         /// Gets the XML document.
         /// </summary>
@@ -185,7 +174,7 @@ namespace Import.NikePlus
         /// <param name="response">The Response from the Nike+ website</param>
         private void ValidateResponse(HttpWebResponse response)
         {
-            var xmlDoc = GetXmlDocument(response);
+            var xmlDoc = GetXmlDocument(response); 
             ValidateStatus(xmlDoc, "Could not login to Nike+ website with the given credentials");
         }
 
@@ -194,20 +183,26 @@ namespace Import.NikePlus
         /// </summary>
         /// <param name="xmlDoc">Xml Document to examine</param>
         /// <param name="errorMessage">Error message to throw in case of error</param>
-        private void ValidateStatus(XmlDocument xmlDoc, string errorMessage){
+        private void ValidateStatus(XmlDocument xmlDoc, string errorMessage)
+        {
+            Contract.Assert(xmlDoc != null, "The given XML document is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(errorMessage), "The given error message is invalid");
+            Contract.Assert(!xmlDoc.OuterXml.Contains("site_outage_plus"), "The Nike+ site is down. Please try to login at a later time.");
+
             Validate(xmlDoc, "/plusService/status", "success", errorMessage);
         }
 
         private void Validate(XmlDocument xmlDoc, string xpath, string toCompare, string errorMessage)
         {
-            var node = xmlDoc.SelectSingleNode(xpath); 
-            if (node != null)
+            Contract.Assert(xmlDoc != null, "The given XML document is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(xpath), "The given xPath is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(toCompare), "The given value to compare is invalid");
+            Contract.Assert(!string.IsNullOrWhiteSpace(errorMessage), "The given error message is invalid");
+
+            var value = xmlDoc.GetValue<String>(xpath);
+            if (string.IsNullOrWhiteSpace(value) || !value.Equals(toCompare, StringComparison.InvariantCultureIgnoreCase))
             {
-                var value = node.Value;
-                if (string.IsNullOrWhiteSpace(value) || !value.Equals(toCompare, StringComparison.InvariantCultureIgnoreCase))
-                {
-                    throw new InvalidOperationException(errorMessage);
-                }
+                throw new InvalidOperationException(errorMessage);
             }
         }
 

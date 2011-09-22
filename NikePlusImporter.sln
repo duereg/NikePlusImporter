@@ -1,9 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NikePlusImporter", "NikePlusImporter\NikePlusImporter.csproj", "{849BF310-4FBD-4827-B103-434961C4F2AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Import.NikePlus", "NikePlusImporter\Import.NikePlus.csproj", "{849BF310-4FBD-4827-B103-434961C4F2AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Import.NikePlus.Test", "NikePlusImporter.Test\Import.NikePlus.Test.csproj", "{7A9DC102-763F-4C02-AA10-C171E6DA67A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CBE0F49-DB19-4E33-BD3B-258EDAFDD20B}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		NikePlusImporter.vsmdi = NikePlusImporter.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = NikePlusImporter.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -13,6 +25,10 @@ Global
 		{849BF310-4FBD-4827-B103-434961C4F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{849BF310-4FBD-4827-B103-434961C4F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{849BF310-4FBD-4827-B103-434961C4F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9DC102-763F-4C02-AA10-C171E6DA67A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9DC102-763F-4C02-AA10-C171E6DA67A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9DC102-763F-4C02-AA10-C171E6DA67A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9DC102-763F-4C02-AA10-C171E6DA67A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

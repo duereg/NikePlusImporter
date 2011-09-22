@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Import.NikePlus.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AUTHENTICATION_URL" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://secure-nikerunning.nike.com/nikeplus/v2/services/app/generate_pin.jsp?login={0}&amp;password={1}</Value>
+    </Setting>
+    <Setting Name="GET_WORKOUTS_LIST_URL" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://secure-nikerunning.nike.com/nikeplus/v2/services/app/run_list.jsp</Value>
+    </Setting>
+    <Setting Name="GET_WORKOUT_DETAILS_URL" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://secure-nikerunning.nike.com/nikeplus/v2/services/app/get_run.jsp?id={0}</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 using Import.NikePlus.Entities;
 using Maximum.Helper;
+using Maximum.Extensions;
 
 namespace Import.NikePlus
 {
@@ -65,40 +66,14 @@ namespace Import.NikePlus
             var nikePlusDocument = new XmlDocument();
             nikePlusDocument.LoadXml(this.FileContents);
 
-            workFromFile.Name = GetValue<String>(nikePlusDocument, WOKROUT_NAME_KEY, "Workout");
-            workFromFile.Comments = GetValue<String>(nikePlusDocument, COMMENTS_KEY);
-            workFromFile.EventDate = GetValue<DateTime>(nikePlusDocument, EVENT_DATE_KEY);
-            workFromFile.Distance = GetValue<float>(nikePlusDocument, DISTANCE_KEY);
-            workFromFile.Duration = GetValue<int>(nikePlusDocument, DURATION_KEY);
-            workFromFile.Calories = GetValue<short>(nikePlusDocument, CALORIES_KEY); 
+            workFromFile.Name = nikePlusDocument.GetValue<String>(WOKROUT_NAME_KEY, "Workout");
+            workFromFile.Comments = nikePlusDocument.GetValue<String>(COMMENTS_KEY);
+            workFromFile.EventDate = nikePlusDocument.GetValue<DateTime>(EVENT_DATE_KEY);
+            workFromFile.Distance = nikePlusDocument.GetValue<float>(DISTANCE_KEY);
+            workFromFile.Duration = nikePlusDocument.GetValue<int>(DURATION_KEY);
+            workFromFile.Calories = nikePlusDocument.GetValue<short>(CALORIES_KEY); 
 
             return workFromFile;
-        }
-
-        private T GetValue<T>(XmlDocument xmlDoc, string xPath, T defaultValue = default(T) ){
-            T value = defaultValue;
-
-            var node = xmlDoc.SelectSingleNode(xPath);
-
-            if(node != null){ 
-                value = StringParser.Convert<T>(node.Value);
-            }
-
-            return value;
-        }
-
-        private T GetAttributeValue<T>(XmlDocument xmlDoc, string xPath, string attributeName)
-        {
-            T value = default(T);
-
-            var node = xmlDoc.SelectSingleNode(xPath);
-
-            if (node != null)
-            {
-                value = StringParser.Convert<T>(node.Attributes[attributeName].Value);
-            }
-
-            return value;
         }
 
         
