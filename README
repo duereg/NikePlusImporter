@@ -1,6 +1,6 @@
 A Nike+ Data Importer, used to import data from their website into a .NET Project. 
 
-This is based on a code written by Francois Duchemin, for the product RunningTracker.
+My thanks go out to Francois Duchemin, for the product RunningTracker. It was the inspiration for this tool.
 
 Written in C#, using .NET 4.0
 
