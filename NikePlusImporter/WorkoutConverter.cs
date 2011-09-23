@@ -57,17 +57,17 @@ namespace Import.NikePlus
 
             workouts =
             from n in NikePlusDoc.Descendants("run")
-            select new Workout{ Calories= Convert.ToInt16 ( n.Element("calories").Value), 
-                                Duration= Convert.ToInt32 ( n.Element("duration").Value), 
-                                Distance= Convert.ToSingle( n.Element("distance").Value),  
-                                EventDate = Convert.ToDateTime(n.Element("startTime").Value),
-                                ID = Convert.ToInt64(n.Attribute("id").Value),
+            select new Workout{ Calories= (float) n.Element("calories"), 
+                                Duration= (int)n.Element("duration"), 
+                                Distance= (float) n.Element("distance"),  
+                                EventDate = (DateTime) n.Element("startTime"),
+                                ID = (long) n.Attribute("id"),
                                 ImportedOn = DateTime.Now, 
                                 Comments= n.Element("description").Value,
                                 Name = n.Element("name").Value,
-                                HeartRateAvg = Convert.ToInt16 ( n.Element("heartrate").Element("average").Value),
-                                HeartRateMax = Convert.ToInt16 ( n.Element("heartrate").Element("maximum").Value),
-                                HeartRateMin = Convert.ToInt16(n.Element("heartrate").Element("minimum").Value)
+                                HeartRateAvg = (short) n.Element("heartrate").Element("average"),
+                                HeartRateMax = (short) n.Element("heartrate").Element("maximum"),
+                                HeartRateMin = (short) n.Element("heartrate").Element("minimum")
             };
 
             return workouts;

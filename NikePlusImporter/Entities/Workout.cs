@@ -13,7 +13,7 @@ namespace Import.NikePlus.Entities
         public DateTime EventDate { get; set; }
         public float Distance { get; set; }
         public int Duration { get; set; }
-        public short Calories { get; set; }
+        public float Calories { get; set; }
         public String Comments { get; set; }
 
         public short HeartRateAvg { get; set; }
