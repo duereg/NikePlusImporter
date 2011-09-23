@@ -15,6 +15,9 @@ namespace Import.NikePlus.Entities
         public int Duration { get; set; }
         public short Calories { get; set; }
         public String Comments { get; set; }
-        public short Interval { get; set; }
+
+        public short HeartRateAvg { get; set; }
+        public short HeartRateMin { get; set; }
+        public short HeartRateMax { get; set; }
     }
 }
