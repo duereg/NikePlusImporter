@@ -54,8 +54,7 @@ namespace Import.NikePlus
         {
             var fileContents = GetWorkoutXml(id);
             var xmlConverter = new WorkoutConverter(fileContents);
-            var workouts = xmlConverter.GetPopulated();
-            return workouts == null ? null : workouts.First();
+            return xmlConverter.GetPopulated();
         }
 
         /// <summary>
@@ -160,22 +159,7 @@ namespace Import.NikePlus
         private void ValidateResponse(HttpWebResponse response)
         {
             var xmlDoc = GetXDocument(response); 
-            ValidateStatus(xmlDoc, "Could not login to Nike+ website with the given credentials");
-            Contract.Assert(response.Cookies.Count > 0);
-        }
-
-        /// <summary>
-        /// Checks the status of the xml document contains "success". Throws exception with given error message if not true. 
-        /// </summary>
-        /// <param name="xmlDoc">Xml Document to examine</param>
-        /// <param name="errorMessage">Error message to throw in case of error</param>
-        private void ValidateStatus(XDocument xmlDoc, string errorMessage)
-        {
-            Contract.Assert(xmlDoc != null, "The given XML document is invalid");
-            Contract.Assert(!string.IsNullOrWhiteSpace(errorMessage), "The given error message is invalid");
-            Contract.Assert(!xmlDoc.ToString().Contains("site_outage_plus"), "The Nike+ site is down. Please try to login at a later time.");
-
-            Contract.Assert(!xmlDoc.Root.Element("status").Equals("success"), errorMessage);
+            Contract.Assert(response.Cookies.Count > 0, "Could not login to Nike+ website with the given credentials");
         }
     }
 }
