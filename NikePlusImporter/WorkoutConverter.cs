@@ -4,6 +4,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Xml.Linq;
 using Import.NikePlus.Entities;
+using Import.NikePlus.Exceptions;
 
 namespace Import.NikePlus
 {
@@ -21,7 +22,7 @@ namespace Import.NikePlus
         /// <param name="fileContents">The file contents to import into the system.</param>
         public WorkoutConverter(string fileContents)
         {
-            Contract.Assert(!string.IsNullOrWhiteSpace(fileContents), "The contents of the file are invalid.");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(fileContents), "The contents of the file are invalid.");
             
             FileContents = fileContents;
             NikePlusDoc = XDocument.Parse(fileContents);
@@ -30,27 +31,39 @@ namespace Import.NikePlus
 
         public WorkoutConverter(XDocument nikePlusDoc)
         {
-            Contract.Assert(nikePlusDoc != null);
+            Contract.Requires(nikePlusDoc != null);
             FileContents = nikePlusDoc.ToString();
             NikePlusDoc = nikePlusDoc;
             ValidateStatus(nikePlusDoc);
         }
 
+        /// <summary>
+        /// Gets a converted version of the workout data contained in this instance.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Workout> Get()
         {
-            if (NikePlusDoc.Descendants("run") != null)
+            IEnumerable<Workout> workouts = null;
+
+            if (NikePlusDoc.Descendants("run").Count() > 0)
             {
-                return GetSimple();
+                workouts = GetSummaries();
+            }
+            else if (NikePlusDoc.Descendants("runSummary").Count() > 0)
+            {
+                var oneWorkout = new List<Workout>();
+                oneWorkout.Add(GetPopulated());
+                workouts = oneWorkout;
             }
             else
             {
-                var workouts =new List<Workout>();
-                workouts.Add(GetPopulated());
-                return workouts;
+                throw new InvalidOperationException("Could not determine the document type, so conversion could not continue.");
             }
+
+            return workouts;
         }
 
-        public IEnumerable<Workout> GetSimple()
+        public IEnumerable<Workout> GetSummaries()
         {
             return CreateSimpleWorkouts(); 
         }
@@ -146,13 +159,14 @@ namespace Import.NikePlus
         /// <param name="errorMessage">Error message to throw in case of error</param>
         private void ValidateStatus(XDocument xmlDoc )
         {
-            Contract.Assert(xmlDoc != null, "The given XML document is invalid");
-            Contract.Assert(!xmlDoc.ToString().Contains("site_outage_plus"), "The Nike+ site is down. Please try to login at a later time.");
+            Contract.Requires<ArgumentNullException>(xmlDoc != null, "The given XML document is invalid.");
+            Contract.Requires<ArgumentException>(xmlDoc.Root != null , "The given XML document is empty.");
+            Contract.Requires<NikePlusException>(!xmlDoc.ToString().Contains("site_outage_plus"), "The Nike+ site is down. Please try to login at a later time.");
 
             if(!xmlDoc.Root.Element("status").Equals("success")){
                 var element = xmlDoc.Root.Element("serviceException");
                 if((element != null) && !string.IsNullOrWhiteSpace(element.Value )){
-                    throw new InvalidOperationException(element.Value);
+                    throw new NikePlusException(element.Value);
                 }
             }
         }

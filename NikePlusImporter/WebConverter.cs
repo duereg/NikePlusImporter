@@ -7,6 +7,7 @@ using System.Net;
 using System.Xml.Linq;
 using Import.NikePlus.Entities;
 using Import.NikePlus.Properties;
+using Import.NikePlus.Exceptions;
 
 namespace Import.NikePlus
 {
@@ -16,15 +17,15 @@ namespace Import.NikePlus
     public class WebConverter
     {
         private CookieCollection Cookies { get; set;}
-        private static Settings Configuration = (Settings) Settings.Synchronized(Settings.Default);
+        internal static Settings Configuration = (Settings) Settings.Synchronized(Settings.Default);
         /// <summary>
         /// Initializes a new instance of the <see cref="WebConverter"/> class.
         /// </summary>
         public WebConverter(string username, string password)
-        {
-            Contract.Assert(!string.IsNullOrWhiteSpace(username), "username is invalid");
-            Contract.Assert(!string.IsNullOrWhiteSpace(password), "password is invalid");
-            Contract.Assert(!string.IsNullOrWhiteSpace(Configuration.AUTHENTICATION_URL), "url is invalid");
+        { 
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(username), "username is invalid");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(password), "password is invalid");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(Settings.Default.AUTHENTICATION_URL), "url is invalid");
 
             Cookies = Authenticate(username, password);
         }
@@ -65,18 +66,22 @@ namespace Import.NikePlus
         {
             var xmlDoc = GetWorkouts();
             var xmlConverter = new WorkoutConverter(xmlDoc);
-            return xmlConverter.GetSimple();
+            return xmlConverter.GetSummaries();
         }
 
+        /// <summary>
+        /// Gets a list of all the the workout IDs in the system.
+        /// </summary>
+        /// <returns>a list of all the workout IDS in the system</returns>
         public IEnumerable<long> GetWorkoutIDs()
         {
-            Contract.Assert(Cookies != null, "Cookie Collection is invalid");
+            Contract.Requires<ArgumentNullException>(Cookies != null, "Cookie Collection is invalid");
 
             var xmlDoc = GetWorkouts();
             var xmlConverter = new WorkoutConverter(xmlDoc);
 
             return
-                from a in xmlConverter.GetSimple()
+                from a in xmlConverter.GetSummaries()
                 select a.ID;
         }
 
@@ -159,7 +164,7 @@ namespace Import.NikePlus
         private void ValidateResponse(HttpWebResponse response)
         {
             var xmlDoc = GetXDocument(response); 
-            Contract.Assert(response.Cookies.Count > 0, "Could not login to Nike+ website with the given credentials");
+            Contract.Requires<NikePlusException>(response.Cookies.Count > 0, "Could not login to Nike+ website with the given credentials");
         }
     }
 }

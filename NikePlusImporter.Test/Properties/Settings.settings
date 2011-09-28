@@ -8,5 +8,227 @@
     <Setting Name="Password" Type="System.String" Scope="Application">
       <Value Profile="(Default)">TEST_ACCOUNT</Value>
     </Setting>
+    <Setting Name="GoodWorkoutXml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;plusService&gt;
+	&lt;status&gt;success&lt;/status&gt;
+	&lt;sportsData&gt;
+		&lt;template&gt;
+			&lt;templateName&gt;
+				&lt;![CDATA[ Basic ]]&gt;
+			&lt;/templateName&gt;
+		&lt;/template&gt;
+		&lt;userInfo&gt;
+			&lt;weight&gt;0.0&lt;/weight&gt;
+			&lt;device&gt;iPod&lt;/device&gt;
+			&lt;empedID&gt;XXXXXXXXXXX&lt;/empedID&gt;
+		&lt;/userInfo&gt;
+		&lt;runSummary hasHRS="true" workoutType="standard"&gt;
+			&lt;distance&gt;8.9881&lt;/distance&gt;
+			&lt;duration&gt;3028440&lt;/duration&gt;
+			&lt;calories&gt;719.0&lt;/calories&gt;
+			&lt;equipmentType&gt;ipod&lt;/equipmentType&gt;
+			&lt;hasGpsData&gt;false&lt;/hasGpsData&gt;
+			&lt;heartrate&gt;
+				&lt;average&gt;141&lt;/average&gt;
+				&lt;maximum&gt;
+					&lt;bpm&gt;157&lt;/bpm&gt;
+					&lt;duration&gt;2961000&lt;/duration&gt;
+					&lt;distance&gt;8.762&lt;/distance&gt;
+					&lt;pace&gt;300228&lt;/pace&gt;
+				&lt;/maximum&gt;
+				&lt;minimum&gt;
+					&lt;bpm&gt;0&lt;/bpm&gt;
+					&lt;duration&gt;0&lt;/duration&gt;
+					&lt;distance&gt;0.0&lt;/distance&gt;
+					&lt;pace&gt;0&lt;/pace&gt;
+				&lt;/minimum&gt;
+			&lt;/heartrate&gt;
+		&lt;/runSummary&gt;
+		&lt;batteryLifetime&gt;0&lt;/batteryLifetime&gt;
+		&lt;startTime&gt;2011-08-20T14:53:31+08:00&lt;/startTime&gt;
+		&lt;syncTime&gt;2011-09-22T07:57:29+00:00&lt;/syncTime&gt;
+		&lt;snapShotList snapShotType="mileSplit"&gt;
+			&lt;snapShot event="" id="2170703146"&gt;
+				&lt;pace&gt;328910&lt;/pace&gt;
+				&lt;distance&gt;1.609&lt;/distance&gt;
+				&lt;duration&gt;534288&lt;/duration&gt;
+				&lt;bpm&gt;133.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703147"&gt;
+				&lt;pace&gt;348645&lt;/pace&gt;
+				&lt;distance&gt;3.219&lt;/distance&gt;
+				&lt;duration&gt;1071553&lt;/duration&gt;
+				&lt;bpm&gt;142.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703148"&gt;
+				&lt;pace&gt;405370&lt;/pace&gt;
+				&lt;distance&gt;4.828&lt;/distance&gt;
+				&lt;duration&gt;1711693&lt;/duration&gt;
+				&lt;bpm&gt;136.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703149"&gt;
+				&lt;pace&gt;320971&lt;/pace&gt;
+				&lt;distance&gt;6.437&lt;/distance&gt;
+				&lt;duration&gt;2238736&lt;/duration&gt;
+				&lt;bpm&gt;148.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703150"&gt;
+				&lt;pace&gt;310280&lt;/pace&gt;
+				&lt;distance&gt;8.047&lt;/distance&gt;
+				&lt;duration&gt;2745959&lt;/duration&gt;
+				&lt;bpm&gt;149.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+		&lt;/snapShotList&gt;
+		&lt;snapShotList snapShotType="userClick"&gt;
+			&lt;snapShot event="stop" id="2170703151"&gt;
+				&lt;pace&gt;294682&lt;/pace&gt;
+				&lt;distance&gt;8.988&lt;/distance&gt;
+				&lt;duration&gt;3028440&lt;/duration&gt;
+				&lt;bpm&gt;155.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+		&lt;/snapShotList&gt;
+		&lt;snapShotList snapShotType="kmSplit"&gt;
+			&lt;snapShot event="" id="2170703138"&gt;
+				&lt;pace&gt;348203&lt;/pace&gt;
+				&lt;distance&gt;1.0&lt;/distance&gt;
+				&lt;duration&gt;333947&lt;/duration&gt;
+				&lt;bpm&gt;130.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703139"&gt;
+				&lt;pace&gt;319471&lt;/pace&gt;
+				&lt;distance&gt;2.0&lt;/distance&gt;
+				&lt;duration&gt;659438&lt;/duration&gt;
+				&lt;bpm&gt;136.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703140"&gt;
+				&lt;pace&gt;351654&lt;/pace&gt;
+				&lt;distance&gt;3.0&lt;/distance&gt;
+				&lt;duration&gt;999407&lt;/duration&gt;
+				&lt;bpm&gt;138.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703141"&gt;
+				&lt;pace&gt;380527&lt;/pace&gt;
+				&lt;distance&gt;4.0&lt;/distance&gt;
+				&lt;duration&gt;1351887&lt;/duration&gt;
+				&lt;bpm&gt;135.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703142"&gt;
+				&lt;pace&gt;358363&lt;/pace&gt;
+				&lt;distance&gt;5.0&lt;/distance&gt;
+				&lt;duration&gt;1772492&lt;/duration&gt;
+				&lt;bpm&gt;139.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703143"&gt;
+				&lt;pace&gt;319505&lt;/pace&gt;
+				&lt;distance&gt;6.0&lt;/distance&gt;
+				&lt;duration&gt;2098455&lt;/duration&gt;
+				&lt;bpm&gt;150.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703144"&gt;
+				&lt;pace&gt;327564&lt;/pace&gt;
+				&lt;distance&gt;7.0&lt;/distance&gt;
+				&lt;duration&gt;2423296&lt;/duration&gt;
+				&lt;bpm&gt;147.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+			&lt;snapShot event="" id="2170703145"&gt;
+				&lt;pace&gt;308672&lt;/pace&gt;
+				&lt;distance&gt;8.0&lt;/distance&gt;
+				&lt;duration&gt;2731029&lt;/duration&gt;
+				&lt;bpm&gt;146.0&lt;/bpm&gt;
+			&lt;/snapShot&gt;
+		&lt;/snapShotList&gt;
+		&lt;extendedDataList&gt;
+			&lt;extendedData dataType="distance" intervalType="time" intervalUnit="s" intervalValue="10"&gt;
+			0.0, 0.0372, 0.0705, 0.1041, 0.1351, 0.1654, 0.2007, 0.2358, 0.2621, 0.2934, 0.3249, 0.3559, 0.3835, 0.4131, 0.4449, 0.4689, 0.4942, 0.5237, 0.5538, 0.5831, 0.6121, 0.6467, 0.6732, 0.7020, 0.7275, 0.7576, 0.7906, 0.8225, 0.8529, 0.8812, 0.9097, 0.9354, 0.9619, 0.9891, 1.0169, 1.0468, 1.0746, 1.1072, 1.1402, 1.1692, 1.1972, 1.2248, 1.2555, 1.2862, 1.3146, 1.3440, 1.3759, 1.4085, 1.4374, 1.4696, 1.5045, 1.5364, 1.5679, 1.5973, 1.6235, 1.6524, 1.6874, 1.7186, 1.7507, 1.7815, 1.8120, 1.8461, 1.8794, 1.9078, 1.9375, 1.9687, 2.0016, 2.0277, 2.0581, 2.0882, 2.1153, 2.1500, 2.1815, 2.2157, 2.2490, 2.2811, 2.3098, 2.3436, 2.3716, 2.4025, 2.4331, 2.4615, 2.4894, 2.5185, 2.5490, 2.5819, 2.6125, 2.6403, 2.6691, 2.6969, 2.7252, 2.7542, 2.7799, 2.8060, 2.8393, 2.8644, 2.8895, 2.9160, 2.9455, 2.9716, 3.0018, 3.0326, 3.0619, 3.0912, 3.1223, 3.1535, 3.1826, 3.2111, 3.2448, 3.2758, 3.3097, 3.3389, 3.3695, 3.4031, 3.4378, 3.4697, 3.4972, 3.5289, 3.5530, 3.5796, 3.6045, 3.6264, 3.6520, 3.6803, 3.6991, 3.7206, 3.7406, 3.7664, 3.7844, 3.8134, 3.8501, 3.8807, 3.9076, 3.9323, 3.9609, 3.9941, 4.0201, 4.0460, 4.0704, 4.0972, 4.1151, 4.1392, 4.1677, 4.1867, 4.2105, 4.2244, 4.2336, 4.2522, 4.2560, 4.2987, 4.3098, 4.3288, 4.3433, 4.3613, 4.3821, 4.4002, 4.4189, 4.4337, 4.4653, 4.4980, 4.5292, 4.5552, 4.5624, 4.5642, 4.6041, 4.6465, 4.6762, 4.7032, 4.7330, 4.7635, 4.7922, 4.8225, 4.8509, 4.8800, 4.9097, 4.9407, 4.9669, 4.9924, 5.0212, 5.0500, 5.0761, 5.1114, 5.1406, 5.1711, 5.1991, 5.2293, 5.2644, 5.2946, 5.3112, 5.3454, 5.3774, 5.4063, 5.4424, 5.4747, 5.5095, 5.5392, 5.5688, 5.5969, 5.6303, 5.6617, 5.6924, 5.7251, 5.7572, 5.7872, 5.8190, 5.8509, 5.8837, 5.9160, 5.9451, 5.9762, 6.0049, 6.0356, 6.0655, 6.0952, 6.1266, 6.1590, 6.1905, 6.2217, 6.2542, 6.2873, 6.3186, 6.3493, 6.3794, 6.4091, 6.4414, 6.4703, 6.4995, 6.5280, 6.5590, 6.5861, 6.6164, 6.6484, 6.6800, 6.7095, 6.7400, 6.7716, 6.8061, 6.8382, 6.8681, 6.8939, 6.9276, 6.9556, 6.9875, 7.0236, 7.0537, 7.0854, 7.1193, 7.1549, 7.1885, 7.2198, 7.2485, 7.2791, 7.3145, 7.3488, 7.3824, 7.4160, 7.4486, 7.4837, 7.5175, 7.5494, 7.5812, 7.6104, 7.6394, 7.6737, 7.7071, 7.7400, 7.7719, 7.8019, 7.8336, 7.8677, 7.8977, 7.9295, 7.9637, 7.9967, 8.0279, 8.0600, 8.0930, 8.1254, 8.1549, 8.1863, 8.2209, 8.2505, 8.2835, 8.3126, 8.3458, 8.3831, 8.4153, 8.4486, 8.4793, 8.5123, 8.5502, 8.5871, 8.6220, 8.6591, 8.6943, 8.7287, 8.7587, 8.7952, 8.8302, 8.8652, 8.8992, 8.9352, 8.9660
+			&lt;/extendedData&gt;
+			&lt;extendedData dataType="speed" intervalType="time" intervalUnit="s" intervalValue="10"&gt;
+			0.0, 13.3866, 12.6856, 12.4970, 12.1590, 11.9093, 12.0432, 12.1223, 11.7931, 11.7377, 11.6934, 11.6472, 11.5061, 11.4392, 11.4414, 11.2525, 11.1192, 11.0899, 11.0767, 11.0483, 11.0208, 10.9867, 10.8513, 10.7613, 10.6627, 10.6588, 10.6234, 10.6094, 10.6349, 10.5961, 10.5269, 10.4313, 10.3979, 10.3873, 10.3078, 10.3483, 10.4457, 10.4992, 10.5581, 10.5429, 10.5301, 10.4336, 10.4786, 10.5158, 10.5598, 10.5559, 10.5115, 10.5571, 10.5255, 10.5879, 10.7023, 10.8019, 10.8832, 10.9479, 10.9193, 10.9040, 11.0131, 11.0103, 10.9822, 10.9996, 11.0509, 11.1806, 11.2279, 11.2011, 11.2131, 11.2440, 11.2638, 11.1440, 11.1883, 11.1453, 10.9932, 11.0488, 11.0439, 11.1228, 11.2492, 11.3171, 11.1992, 11.2436, 11.1729, 11.1731, 11.1711, 11.0951, 10.9800, 10.9832, 11.0036, 11.0580, 10.9964, 11.0112, 11.0058, 10.9565, 10.9769, 10.9206, 10.7789, 10.6716, 10.6251, 10.4982, 10.4444, 10.3580, 10.3583, 10.2449, 10.2375, 10.2891, 10.3036, 10.3089, 10.3338, 10.3067, 10.2634, 10.2903, 10.3533, 10.4072, 10.5213, 10.5209, 10.5997, 10.7443, 10.7674, 10.8575, 10.8860, 11.0247, 10.9310, 10.9206, 10.8489, 10.6875, 10.6653, 10.5898, 10.3819, 10.2115, 10.0355, 10.0360, 9.7516, 9.6672, 9.7358, 9.7433, 9.6857, 9.5711, 9.4676, 9.4585, 9.4125, 9.3532, 9.3198, 9.3329, 9.1420, 9.2574, 9.2843, 9.1694, 9.1997, 9.0487, 8.8806, 8.7429, 8.4456, 8.7771, 8.4521, 8.1286, 7.8942, 7.7359, 7.6138, 7.3548, 7.1695, 6.9900, 7.1127, 7.2238, 7.4439, 7.5106, 7.1531, 6.7941, 7.0797, 7.4258, 7.9541, 8.0838, 8.4825, 8.4550, 8.5790, 8.8405, 9.1283, 9.3122, 9.4669, 9.7445, 9.8252, 10.0261, 10.0100, 9.9628, 9.8445, 9.9776, 10.2083, 10.6038, 11.0057, 10.4380, 10.6443, 10.6188, 10.4073, 10.4679, 10.5263, 10.5203, 10.6453, 10.7076, 10.8004, 10.7692, 10.8206, 10.8541, 10.9434, 11.0018, 11.0940, 11.1297, 11.0900, 11.0804, 11.1536, 11.2015, 11.1605, 11.1841, 11.4019, 11.3686, 11.2707, 11.3306, 11.2169, 11.1663, 11.1087, 11.1501, 11.1710, 11.2425, 11.2425, 11.2628, 11.2731, 11.2565, 11.1923, 11.1898, 11.2105, 11.1449, 11.0953, 11.0160, 11.0533, 10.9714, 11.0143, 11.0224, 11.0558, 11.0562, 11.0554, 11.0403, 11.0800, 11.0964, 11.0613, 10.9210, 10.9791, 10.9167, 10.9395, 11.0615, 11.0232, 11.0693, 11.1390, 11.2707, 11.3247, 11.3813, 11.3760, 11.3549, 11.4223, 11.4983, 11.5608, 11.5961, 11.5746, 11.6108, 11.6926, 11.7170, 11.7909, 11.7877, 11.7343, 11.7044, 11.7614, 11.7849, 11.7510, 11.6799, 11.6173, 11.6514, 11.6857, 11.6983, 11.6988, 11.6688, 11.6151, 11.5836, 11.6025, 11.5505, 11.4778, 11.4698, 11.5183, 11.4709, 11.5853, 11.5202, 11.5162, 11.5713, 11.5896, 11.6266, 11.6203, 11.6254, 11.7492, 11.8472, 11.8497, 11.9234, 11.9620, 12.0351, 11.9861, 12.0244, 12.1356, 12.2112, 12.2088, 12.3022, 12.2811
+			&lt;/extendedData&gt;
+			&lt;extendedData dataType="heartRate" intervalType="time" intervalUnit="s" intervalValue="10"&gt;
+			0, 88, 108, 115, 116, 117, 126, 127, 128, 129, 127, 129, 130, 130, 131, 129, 129, 129, 130, 132, 132, 132, 132, 129, 129, 131, 133, 134, 134, 130, 130, 129, 131, 131, 130, 126, 128, 132, 134, 133, 130, 131, 132, 133, 131, 134, 136, 136, 135, 135, 135, 135, 135, 134, 136, 136, 139, 141, 139, 139, 139, 139, 139, 140, 140, 141, 136, 137, 136, 138, 139, 142, 141, 140, 141, 139, 139, 139, 139, 139, 141, 140, 140, 142, 142, 140, 139, 139, 138, 137, 137, 138, 139, 140, 139, 139, 140, 139, 138, 138, 138, 135, 142, 142, 142, 142, 143, 142, 142, 139, 141, 142, 143, 145, 143, 143, 142, 142, 141, 141, 142, 143, 147, 147, 145, 142, 141, 140, 138, 138, 135, 137, 137, 137, 135, 136, 134, 135, 136, 135, 135, 135, 135, 135, 129, 129, 132, 132, 131, 134, 138, 143, 145, 145, 144, 145, 144, 144, 146, 144, 142, 140, 138, 134, 129, 129, 132, 132, 135, 135, 133, 136, 136, 136, 137, 138, 140, 140, 141, 141, 142, 142, 143, 143, 145, 144, 146, 144, 139, 138, 136, 135, 136, 135, 138, 141, 142, 142, 146, 149, 145, 146, 149, 152, 149, 149, 146, 146, 148, 148, 150, 153, 152, 152, 151, 151, 147, 143, 145, 151, 149, 150, 150, 148, 147, 145, 146, 146, 145, 144, 147, 148, 148, 146, 150, 148, 148, 149, 147, 148, 147, 147, 148, 149, 149, 145, 143, 146, 145, 145, 146, 147, 149, 151, 149, 150, 151, 153, 152, 150, 152, 156, 154, 153, 154, 152, 152, 151, 153, 152, 151, 151, 150, 146, 147, 148, 150, 150, 148, 147, 150, 150, 152, 151, 153, 152, 153, 153, 154, 154, 151, 152, 153, 151, 152, 153, 157, 154, 155, 156, 156, 155, 155
+			&lt;/extendedData&gt;
+		&lt;/extendedDataList&gt;
+		&lt;bestComparableRun/&gt;
+		&lt;hasHRS&gt;true&lt;/hasHRS&gt;
+		&lt;name/&gt;
+		&lt;description/&gt;
+		&lt;signatureValidationStatus&gt;0&lt;/signatureValidationStatus&gt;
+		&lt;howFelt/&gt;
+		&lt;weather/&gt;
+		&lt;terrain/&gt;
+		&lt;isHumanRaceRun&gt;false&lt;/isHumanRaceRun&gt;
+		&lt;isFirstHeartRun&gt;true&lt;/isFirstHeartRun&gt;
+		&lt;heartBeatTotal&gt;7050&lt;/heartBeatTotal&gt;
+		&lt;intensity/&gt;
+		&lt;workoutType&gt;standard&lt;/workoutType&gt;
+		&lt;previousRun id=""/&gt;
+		&lt;nextRun id=""/&gt;
+	&lt;/sportsData&gt;
+&lt;/plusService&gt;
+</Value>
+    </Setting>
+    <Setting Name="BadWorkoutXml" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;plusService&gt;
+	&lt;status&gt;failure&lt;/status&gt;
+	&lt;serviceException errorCode="RequestParametersError"&gt;
+		the userID of the public access doesn't match with the userID of the run
+	&lt;/serviceException&gt;
+&lt;/plusService&gt;</Value>
+    </Setting>
+    <Setting Name="EmptyRunList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;plusService&gt;
+	&lt;status&gt;success&lt;/status&gt;
+	&lt;runList endIndex="-1" startIndex="0"/&gt;
+	&lt;runListSummary&gt;
+		&lt;runs&gt;0&lt;/runs&gt;
+		&lt;distance&gt;0.0&lt;/distance&gt;
+		&lt;duration&gt;0.0&lt;/duration&gt;
+		&lt;runDuration&gt;0.0&lt;/runDuration&gt;
+		&lt;calories&gt;0.0&lt;/calories&gt;
+		&lt;totalSteps&gt;0&lt;/totalSteps&gt;
+	&lt;/runListSummary&gt;
+&lt;/plusService&gt;</Value>
+    </Setting>
+    <Setting Name="GoodRunList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;plusService&gt;
+	&lt;status&gt;success&lt;/status&gt;
+	&lt;runList endIndex="-1" startIndex="0"&gt;
+		&lt;run id="31139867" workoutType="heartrate"&gt;
+			&lt;startTime&gt;2011-08-20T14:53:31+08:00&lt;/startTime&gt;
+			&lt;distance&gt;8.9881&lt;/distance&gt;
+			&lt;duration&gt;3028440&lt;/duration&gt;
+			&lt;syncTime&gt;2011-09-22T07:57:29+00:00&lt;/syncTime&gt;
+			&lt;calories&gt;719.0&lt;/calories&gt;
+			&lt;name/&gt;
+			&lt;description/&gt;
+			&lt;howFelt/&gt;
+			&lt;weather/&gt;
+			&lt;terrain/&gt;
+			&lt;intensity/&gt;
+			&lt;gpxId/&gt;
+			&lt;hasGpsData&gt;false&lt;/hasGpsData&gt;
+			&lt;equipmentType&gt;ipod&lt;/equipmentType&gt;
+			&lt;heartrate&gt;
+			&lt;average&gt;141&lt;/average&gt;
+			&lt;minimum&gt;0&lt;/minimum&gt;
+			&lt;maximum&gt;157&lt;/maximum&gt;
+			&lt;/heartrate&gt;
+		&lt;/run&gt;
+	&lt;/runList&gt;
+	&lt;runListSummary&gt;
+		&lt;runs&gt;1&lt;/runs&gt;
+		&lt;distance&gt;8.9881&lt;/distance&gt;
+		&lt;runDuration&gt;3028440&lt;/runDuration&gt;
+		&lt;calories&gt;719.0&lt;/calories&gt;
+		&lt;duration&gt;3028440&lt;/duration&gt;
+	&lt;/runListSummary&gt;
+&lt;/plusService&gt;</Value>
+    </Setting>
+    <Setting Name="BadRunList" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;plusService&gt;
+	&lt;status&gt;failure&lt;/status&gt;
+	&lt;serviceException errorCode="NoDataFoundError"&gt;There is no user for the requested id.&lt;/serviceException&gt;
+&lt;/plusService&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

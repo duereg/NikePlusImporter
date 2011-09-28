@@ -6,7 +6,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Import.NikePlus;
 using Import.NikePlus.Test.Properties;
 using System.Diagnostics.Contracts;
-using NUnit.Framework; 
+using NUnit.Framework;
+
+using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Import.NikePlus.Test
 {
@@ -91,8 +93,8 @@ namespace Import.NikePlus.Test
             //Act
             var ids = converter.GetWorkoutIDs();
             //Assert
-            Contract.Assert(ids != null);
-            Contract.Assert(ids.Count() > 0);
+            Assert.IsNotNull(ids);
+            Assert.AreNotEqual(ids.Count(), 0);
         }
 
         [TestMethod]
@@ -104,8 +106,8 @@ namespace Import.NikePlus.Test
             //Act
             var workouts = converter.GetWorkoutSummaries();
             //Assert
-            Contract.Assert(workouts != null);
-            Contract.Assert(workouts.Count() > 0);
+            Assert.IsNotNull(workouts);
+            Assert.AreNotEqual(workouts.Count(), 0);
             foreach (var w in workouts)
             { 
                 Console.Out.WriteLine("{0} [{1}] Calories: {2} Distance: {3} Time: {4}", w.ID, w.Name, w.Calories, w.Distance, new TimeSpan(w.Duration));
@@ -122,7 +124,7 @@ namespace Import.NikePlus.Test
             var ids = converter.GetWorkoutIDs();
             foreach(var id in ids){
                 var w = converter.GetWorkout(id);
-                Contract.Assert(w != null);
+                Assert.IsNotNull(w );
                 Console.Out.WriteLine("{0} [{1}] Calories: {2} Distance: {3} Time: {4}", w.ID, w.Name, w.Calories, w.Distance, new TimeSpan(w.Duration));
                 if (w.Snapshots != null)
                 {
@@ -138,8 +140,8 @@ namespace Import.NikePlus.Test
             }
 
             //Assert
-            Contract.Assert(ids != null);
-            Contract.Assert(ids.Count() > 0);
+            Assert.IsNotNull(ids);
+            Assert.AreNotEqual(ids.Count(), 0);
         }
 
     }

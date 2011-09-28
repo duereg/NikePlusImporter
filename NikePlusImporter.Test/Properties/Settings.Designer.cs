@@ -40,5 +40,242 @@ namespace Import.NikePlus.Test.Properties {
                 return ((string)(this["Password"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<plusService>\r\n\t<status>success</status>\r\n\t<sportsData>\r\n\t\t<template>\r\n\t\t\t<templa" +
+            "teName>\r\n\t\t\t\t<![CDATA[ Basic ]]>\r\n\t\t\t</templateName>\r\n\t\t</template>\r\n\t\t<userInfo" +
+            ">\r\n\t\t\t<weight>0.0</weight>\r\n\t\t\t<device>iPod</device>\r\n\t\t\t<empedID>XXXXXXXXXXX</e" +
+            "mpedID>\r\n\t\t</userInfo>\r\n\t\t<runSummary hasHRS=\"true\" workoutType=\"standard\">\r\n\t\t\t" +
+            "<distance>8.9881</distance>\r\n\t\t\t<duration>3028440</duration>\r\n\t\t\t<calories>719.0" +
+            "</calories>\r\n\t\t\t<equipmentType>ipod</equipmentType>\r\n\t\t\t<hasGpsData>false</hasGp" +
+            "sData>\r\n\t\t\t<heartrate>\r\n\t\t\t\t<average>141</average>\r\n\t\t\t\t<maximum>\r\n\t\t\t\t\t<bpm>157" +
+            "</bpm>\r\n\t\t\t\t\t<duration>2961000</duration>\r\n\t\t\t\t\t<distance>8.762</distance>\r\n\t\t\t\t" +
+            "\t<pace>300228</pace>\r\n\t\t\t\t</maximum>\r\n\t\t\t\t<minimum>\r\n\t\t\t\t\t<bpm>0</bpm>\r\n\t\t\t\t\t<du" +
+            "ration>0</duration>\r\n\t\t\t\t\t<distance>0.0</distance>\r\n\t\t\t\t\t<pace>0</pace>\r\n\t\t\t\t</m" +
+            "inimum>\r\n\t\t\t</heartrate>\r\n\t\t</runSummary>\r\n\t\t<batteryLifetime>0</batteryLifetime" +
+            ">\r\n\t\t<startTime>2011-08-20T14:53:31+08:00</startTime>\r\n\t\t<syncTime>2011-09-22T07" +
+            ":57:29+00:00</syncTime>\r\n\t\t<snapShotList snapShotType=\"mileSplit\">\r\n\t\t\t<snapShot" +
+            " event=\"\" id=\"2170703146\">\r\n\t\t\t\t<pace>328910</pace>\r\n\t\t\t\t<distance>1.609</distan" +
+            "ce>\r\n\t\t\t\t<duration>534288</duration>\r\n\t\t\t\t<bpm>133.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<" +
+            "snapShot event=\"\" id=\"2170703147\">\r\n\t\t\t\t<pace>348645</pace>\r\n\t\t\t\t<distance>3.219" +
+            "</distance>\r\n\t\t\t\t<duration>1071553</duration>\r\n\t\t\t\t<bpm>142.0</bpm>\r\n\t\t\t</snapSh" +
+            "ot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703148\">\r\n\t\t\t\t<pace>405370</pace>\r\n\t\t\t\t<dista" +
+            "nce>4.828</distance>\r\n\t\t\t\t<duration>1711693</duration>\r\n\t\t\t\t<bpm>136.0</bpm>\r\n\t\t" +
+            "\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703149\">\r\n\t\t\t\t<pace>320971</pace>\r\n\t" +
+            "\t\t\t<distance>6.437</distance>\r\n\t\t\t\t<duration>2238736</duration>\r\n\t\t\t\t<bpm>148.0<" +
+            "/bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703150\">\r\n\t\t\t\t<pace>310280<" +
+            "/pace>\r\n\t\t\t\t<distance>8.047</distance>\r\n\t\t\t\t<duration>2745959</duration>\r\n\t\t\t\t<b" +
+            "pm>149.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t</snapShotList>\r\n\t\t<snapShotList snapShotType=" +
+            "\"userClick\">\r\n\t\t\t<snapShot event=\"stop\" id=\"2170703151\">\r\n\t\t\t\t<pace>294682</pace" +
+            ">\r\n\t\t\t\t<distance>8.988</distance>\r\n\t\t\t\t<duration>3028440</duration>\r\n\t\t\t\t<bpm>15" +
+            "5.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t</snapShotList>\r\n\t\t<snapShotList snapShotType=\"kmSp" +
+            "lit\">\r\n\t\t\t<snapShot event=\"\" id=\"2170703138\">\r\n\t\t\t\t<pace>348203</pace>\r\n\t\t\t\t<dis" +
+            "tance>1.0</distance>\r\n\t\t\t\t<duration>333947</duration>\r\n\t\t\t\t<bpm>130.0</bpm>\r\n\t\t\t" +
+            "</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703139\">\r\n\t\t\t\t<pace>319471</pace>\r\n\t\t" +
+            "\t\t<distance>2.0</distance>\r\n\t\t\t\t<duration>659438</duration>\r\n\t\t\t\t<bpm>136.0</bpm" +
+            ">\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703140\">\r\n\t\t\t\t<pace>351654</pac" +
+            "e>\r\n\t\t\t\t<distance>3.0</distance>\r\n\t\t\t\t<duration>999407</duration>\r\n\t\t\t\t<bpm>138." +
+            "0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703141\">\r\n\t\t\t\t<pace>38052" +
+            "7</pace>\r\n\t\t\t\t<distance>4.0</distance>\r\n\t\t\t\t<duration>1351887</duration>\r\n\t\t\t\t<b" +
+            "pm>135.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703142\">\r\n\t\t\t\t<pac" +
+            "e>358363</pace>\r\n\t\t\t\t<distance>5.0</distance>\r\n\t\t\t\t<duration>1772492</duration>\r" +
+            "\n\t\t\t\t<bpm>139.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2170703143\">\r\n\t" +
+            "\t\t\t<pace>319505</pace>\r\n\t\t\t\t<distance>6.0</distance>\r\n\t\t\t\t<duration>2098455</dur" +
+            "ation>\r\n\t\t\t\t<bpm>150.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"21707031" +
+            "44\">\r\n\t\t\t\t<pace>327564</pace>\r\n\t\t\t\t<distance>7.0</distance>\r\n\t\t\t\t<duration>24232" +
+            "96</duration>\r\n\t\t\t\t<bpm>147.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t\t<snapShot event=\"\" id=\"2" +
+            "170703145\">\r\n\t\t\t\t<pace>308672</pace>\r\n\t\t\t\t<distance>8.0</distance>\r\n\t\t\t\t<duratio" +
+            "n>2731029</duration>\r\n\t\t\t\t<bpm>146.0</bpm>\r\n\t\t\t</snapShot>\r\n\t\t</snapShotList>\r\n\t" +
+            "\t<extendedDataList>\r\n\t\t\t<extendedData dataType=\"distance\" intervalType=\"time\" in" +
+            "tervalUnit=\"s\" intervalValue=\"10\">\r\n\t\t\t0.0, 0.0372, 0.0705, 0.1041, 0.1351, 0.16" +
+            "54, 0.2007, 0.2358, 0.2621, 0.2934, 0.3249, 0.3559, 0.3835, 0.4131, 0.4449, 0.46" +
+            "89, 0.4942, 0.5237, 0.5538, 0.5831, 0.6121, 0.6467, 0.6732, 0.7020, 0.7275, 0.75" +
+            "76, 0.7906, 0.8225, 0.8529, 0.8812, 0.9097, 0.9354, 0.9619, 0.9891, 1.0169, 1.04" +
+            "68, 1.0746, 1.1072, 1.1402, 1.1692, 1.1972, 1.2248, 1.2555, 1.2862, 1.3146, 1.34" +
+            "40, 1.3759, 1.4085, 1.4374, 1.4696, 1.5045, 1.5364, 1.5679, 1.5973, 1.6235, 1.65" +
+            "24, 1.6874, 1.7186, 1.7507, 1.7815, 1.8120, 1.8461, 1.8794, 1.9078, 1.9375, 1.96" +
+            "87, 2.0016, 2.0277, 2.0581, 2.0882, 2.1153, 2.1500, 2.1815, 2.2157, 2.2490, 2.28" +
+            "11, 2.3098, 2.3436, 2.3716, 2.4025, 2.4331, 2.4615, 2.4894, 2.5185, 2.5490, 2.58" +
+            "19, 2.6125, 2.6403, 2.6691, 2.6969, 2.7252, 2.7542, 2.7799, 2.8060, 2.8393, 2.86" +
+            "44, 2.8895, 2.9160, 2.9455, 2.9716, 3.0018, 3.0326, 3.0619, 3.0912, 3.1223, 3.15" +
+            "35, 3.1826, 3.2111, 3.2448, 3.2758, 3.3097, 3.3389, 3.3695, 3.4031, 3.4378, 3.46" +
+            "97, 3.4972, 3.5289, 3.5530, 3.5796, 3.6045, 3.6264, 3.6520, 3.6803, 3.6991, 3.72" +
+            "06, 3.7406, 3.7664, 3.7844, 3.8134, 3.8501, 3.8807, 3.9076, 3.9323, 3.9609, 3.99" +
+            "41, 4.0201, 4.0460, 4.0704, 4.0972, 4.1151, 4.1392, 4.1677, 4.1867, 4.2105, 4.22" +
+            "44, 4.2336, 4.2522, 4.2560, 4.2987, 4.3098, 4.3288, 4.3433, 4.3613, 4.3821, 4.40" +
+            "02, 4.4189, 4.4337, 4.4653, 4.4980, 4.5292, 4.5552, 4.5624, 4.5642, 4.6041, 4.64" +
+            "65, 4.6762, 4.7032, 4.7330, 4.7635, 4.7922, 4.8225, 4.8509, 4.8800, 4.9097, 4.94" +
+            "07, 4.9669, 4.9924, 5.0212, 5.0500, 5.0761, 5.1114, 5.1406, 5.1711, 5.1991, 5.22" +
+            "93, 5.2644, 5.2946, 5.3112, 5.3454, 5.3774, 5.4063, 5.4424, 5.4747, 5.5095, 5.53" +
+            "92, 5.5688, 5.5969, 5.6303, 5.6617, 5.6924, 5.7251, 5.7572, 5.7872, 5.8190, 5.85" +
+            "09, 5.8837, 5.9160, 5.9451, 5.9762, 6.0049, 6.0356, 6.0655, 6.0952, 6.1266, 6.15" +
+            "90, 6.1905, 6.2217, 6.2542, 6.2873, 6.3186, 6.3493, 6.3794, 6.4091, 6.4414, 6.47" +
+            "03, 6.4995, 6.5280, 6.5590, 6.5861, 6.6164, 6.6484, 6.6800, 6.7095, 6.7400, 6.77" +
+            "16, 6.8061, 6.8382, 6.8681, 6.8939, 6.9276, 6.9556, 6.9875, 7.0236, 7.0537, 7.08" +
+            "54, 7.1193, 7.1549, 7.1885, 7.2198, 7.2485, 7.2791, 7.3145, 7.3488, 7.3824, 7.41" +
+            "60, 7.4486, 7.4837, 7.5175, 7.5494, 7.5812, 7.6104, 7.6394, 7.6737, 7.7071, 7.74" +
+            "00, 7.7719, 7.8019, 7.8336, 7.8677, 7.8977, 7.9295, 7.9637, 7.9967, 8.0279, 8.06" +
+            "00, 8.0930, 8.1254, 8.1549, 8.1863, 8.2209, 8.2505, 8.2835, 8.3126, 8.3458, 8.38" +
+            "31, 8.4153, 8.4486, 8.4793, 8.5123, 8.5502, 8.5871, 8.6220, 8.6591, 8.6943, 8.72" +
+            "87, 8.7587, 8.7952, 8.8302, 8.8652, 8.8992, 8.9352, 8.9660\r\n\t\t\t</extendedData>\r\n" +
+            "\t\t\t<extendedData dataType=\"speed\" intervalType=\"time\" intervalUnit=\"s\" intervalV" +
+            "alue=\"10\">\r\n\t\t\t0.0, 13.3866, 12.6856, 12.4970, 12.1590, 11.9093, 12.0432, 12.122" +
+            "3, 11.7931, 11.7377, 11.6934, 11.6472, 11.5061, 11.4392, 11.4414, 11.2525, 11.11" +
+            "92, 11.0899, 11.0767, 11.0483, 11.0208, 10.9867, 10.8513, 10.7613, 10.6627, 10.6" +
+            "588, 10.6234, 10.6094, 10.6349, 10.5961, 10.5269, 10.4313, 10.3979, 10.3873, 10." +
+            "3078, 10.3483, 10.4457, 10.4992, 10.5581, 10.5429, 10.5301, 10.4336, 10.4786, 10" +
+            ".5158, 10.5598, 10.5559, 10.5115, 10.5571, 10.5255, 10.5879, 10.7023, 10.8019, 1" +
+            "0.8832, 10.9479, 10.9193, 10.9040, 11.0131, 11.0103, 10.9822, 10.9996, 11.0509, " +
+            "11.1806, 11.2279, 11.2011, 11.2131, 11.2440, 11.2638, 11.1440, 11.1883, 11.1453," +
+            " 10.9932, 11.0488, 11.0439, 11.1228, 11.2492, 11.3171, 11.1992, 11.2436, 11.1729" +
+            ", 11.1731, 11.1711, 11.0951, 10.9800, 10.9832, 11.0036, 11.0580, 10.9964, 11.011" +
+            "2, 11.0058, 10.9565, 10.9769, 10.9206, 10.7789, 10.6716, 10.6251, 10.4982, 10.44" +
+            "44, 10.3580, 10.3583, 10.2449, 10.2375, 10.2891, 10.3036, 10.3089, 10.3338, 10.3" +
+            "067, 10.2634, 10.2903, 10.3533, 10.4072, 10.5213, 10.5209, 10.5997, 10.7443, 10." +
+            "7674, 10.8575, 10.8860, 11.0247, 10.9310, 10.9206, 10.8489, 10.6875, 10.6653, 10" +
+            ".5898, 10.3819, 10.2115, 10.0355, 10.0360, 9.7516, 9.6672, 9.7358, 9.7433, 9.685" +
+            "7, 9.5711, 9.4676, 9.4585, 9.4125, 9.3532, 9.3198, 9.3329, 9.1420, 9.2574, 9.284" +
+            "3, 9.1694, 9.1997, 9.0487, 8.8806, 8.7429, 8.4456, 8.7771, 8.4521, 8.1286, 7.894" +
+            "2, 7.7359, 7.6138, 7.3548, 7.1695, 6.9900, 7.1127, 7.2238, 7.4439, 7.5106, 7.153" +
+            "1, 6.7941, 7.0797, 7.4258, 7.9541, 8.0838, 8.4825, 8.4550, 8.5790, 8.8405, 9.128" +
+            "3, 9.3122, 9.4669, 9.7445, 9.8252, 10.0261, 10.0100, 9.9628, 9.8445, 9.9776, 10." +
+            "2083, 10.6038, 11.0057, 10.4380, 10.6443, 10.6188, 10.4073, 10.4679, 10.5263, 10" +
+            ".5203, 10.6453, 10.7076, 10.8004, 10.7692, 10.8206, 10.8541, 10.9434, 11.0018, 1" +
+            "1.0940, 11.1297, 11.0900, 11.0804, 11.1536, 11.2015, 11.1605, 11.1841, 11.4019, " +
+            "11.3686, 11.2707, 11.3306, 11.2169, 11.1663, 11.1087, 11.1501, 11.1710, 11.2425," +
+            " 11.2425, 11.2628, 11.2731, 11.2565, 11.1923, 11.1898, 11.2105, 11.1449, 11.0953" +
+            ", 11.0160, 11.0533, 10.9714, 11.0143, 11.0224, 11.0558, 11.0562, 11.0554, 11.040" +
+            "3, 11.0800, 11.0964, 11.0613, 10.9210, 10.9791, 10.9167, 10.9395, 11.0615, 11.02" +
+            "32, 11.0693, 11.1390, 11.2707, 11.3247, 11.3813, 11.3760, 11.3549, 11.4223, 11.4" +
+            "983, 11.5608, 11.5961, 11.5746, 11.6108, 11.6926, 11.7170, 11.7909, 11.7877, 11." +
+            "7343, 11.7044, 11.7614, 11.7849, 11.7510, 11.6799, 11.6173, 11.6514, 11.6857, 11" +
+            ".6983, 11.6988, 11.6688, 11.6151, 11.5836, 11.6025, 11.5505, 11.4778, 11.4698, 1" +
+            "1.5183, 11.4709, 11.5853, 11.5202, 11.5162, 11.5713, 11.5896, 11.6266, 11.6203, " +
+            "11.6254, 11.7492, 11.8472, 11.8497, 11.9234, 11.9620, 12.0351, 11.9861, 12.0244," +
+            " 12.1356, 12.2112, 12.2088, 12.3022, 12.2811\r\n\t\t\t</extendedData>\r\n\t\t\t<extendedDa" +
+            "ta dataType=\"heartRate\" intervalType=\"time\" intervalUnit=\"s\" intervalValue=\"10\">" +
+            "\r\n\t\t\t0, 88, 108, 115, 116, 117, 126, 127, 128, 129, 127, 129, 130, 130, 131, 129" +
+            ", 129, 129, 130, 132, 132, 132, 132, 129, 129, 131, 133, 134, 134, 130, 130, 129" +
+            ", 131, 131, 130, 126, 128, 132, 134, 133, 130, 131, 132, 133, 131, 134, 136, 136" +
+            ", 135, 135, 135, 135, 135, 134, 136, 136, 139, 141, 139, 139, 139, 139, 139, 140" +
+            ", 140, 141, 136, 137, 136, 138, 139, 142, 141, 140, 141, 139, 139, 139, 139, 139" +
+            ", 141, 140, 140, 142, 142, 140, 139, 139, 138, 137, 137, 138, 139, 140, 139, 139" +
+            ", 140, 139, 138, 138, 138, 135, 142, 142, 142, 142, 143, 142, 142, 139, 141, 142" +
+            ", 143, 145, 143, 143, 142, 142, 141, 141, 142, 143, 147, 147, 145, 142, 141, 140" +
+            ", 138, 138, 135, 137, 137, 137, 135, 136, 134, 135, 136, 135, 135, 135, 135, 135" +
+            ", 129, 129, 132, 132, 131, 134, 138, 143, 145, 145, 144, 145, 144, 144, 146, 144" +
+            ", 142, 140, 138, 134, 129, 129, 132, 132, 135, 135, 133, 136, 136, 136, 137, 138" +
+            ", 140, 140, 141, 141, 142, 142, 143, 143, 145, 144, 146, 144, 139, 138, 136, 135" +
+            ", 136, 135, 138, 141, 142, 142, 146, 149, 145, 146, 149, 152, 149, 149, 146, 146" +
+            ", 148, 148, 150, 153, 152, 152, 151, 151, 147, 143, 145, 151, 149, 150, 150, 148" +
+            ", 147, 145, 146, 146, 145, 144, 147, 148, 148, 146, 150, 148, 148, 149, 147, 148" +
+            ", 147, 147, 148, 149, 149, 145, 143, 146, 145, 145, 146, 147, 149, 151, 149, 150" +
+            ", 151, 153, 152, 150, 152, 156, 154, 153, 154, 152, 152, 151, 153, 152, 151, 151" +
+            ", 150, 146, 147, 148, 150, 150, 148, 147, 150, 150, 152, 151, 153, 152, 153, 153" +
+            ", 154, 154, 151, 152, 153, 151, 152, 153, 157, 154, 155, 156, 156, 155, 155\r\n\t\t\t" +
+            "</extendedData>\r\n\t\t</extendedDataList>\r\n\t\t<bestComparableRun/>\r\n\t\t<hasHRS>true</" +
+            "hasHRS>\r\n\t\t<name/>\r\n\t\t<description/>\r\n\t\t<signatureValidationStatus>0</signatureV" +
+            "alidationStatus>\r\n\t\t<howFelt/>\r\n\t\t<weather/>\r\n\t\t<terrain/>\r\n\t\t<isHumanRaceRun>fa" +
+            "lse</isHumanRaceRun>\r\n\t\t<isFirstHeartRun>true</isFirstHeartRun>\r\n\t\t<heartBeatTot" +
+            "al>7050</heartBeatTotal>\r\n\t\t<intensity/>\r\n\t\t<workoutType>standard</workoutType>\r" +
+            "\n\t\t<previousRun id=\"\"/>\r\n\t\t<nextRun id=\"\"/>\r\n\t</sportsData>\r\n</plusService>\r\n")]
+        public string GoodWorkoutXml {
+            get {
+                return ((string)(this["GoodWorkoutXml"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<plusService>\r\n\t<status>failure</status>\r\n\t<serviceException errorCode=\"RequestPa" +
+            "rametersError\">\r\n\t\tthe userID of the public access doesn\'t match with the userID" +
+            " of the run\r\n\t</serviceException>\r\n</plusService>")]
+        public string BadWorkoutXml {
+            get {
+                return ((string)(this["BadWorkoutXml"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<plusService>
+	<status>success</status>
+	<runList endIndex=""-1"" startIndex=""0""/>
+	<runListSummary>
+		<runs>0</runs>
+		<distance>0.0</distance>
+		<duration>0.0</duration>
+		<runDuration>0.0</runDuration>
+		<calories>0.0</calories>
+		<totalSteps>0</totalSteps>
+	</runListSummary>
+</plusService>")]
+        public string EmptyRunList {
+            get {
+                return ((string)(this["EmptyRunList"]));
+            }
+            set {
+                this["EmptyRunList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<plusService>
+	<status>success</status>
+	<runList endIndex=""-1"" startIndex=""0"">
+		<run id=""31139867"" workoutType=""heartrate"">
+			<startTime>2011-08-20T14:53:31+08:00</startTime>
+			<distance>8.9881</distance>
+			<duration>3028440</duration>
+			<syncTime>2011-09-22T07:57:29+00:00</syncTime>
+			<calories>719.0</calories>
+			<name/>
+			<description/>
+			<howFelt/>
+			<weather/>
+			<terrain/>
+			<intensity/>
+			<gpxId/>
+			<hasGpsData>false</hasGpsData>
+			<equipmentType>ipod</equipmentType>
+			<heartrate>
+			<average>141</average>
+			<minimum>0</minimum>
+			<maximum>157</maximum>
+			</heartrate>
+		</run>
+	</runList>
+	<runListSummary>
+		<runs>1</runs>
+		<distance>8.9881</distance>
+		<runDuration>3028440</runDuration>
+		<calories>719.0</calories>
+		<duration>3028440</duration>
+	</runListSummary>
+</plusService>")]
+        public string GoodRunList {
+            get {
+                return ((string)(this["GoodRunList"]));
+            }
+            set {
+                this["GoodRunList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("<plusService>\r\n\t<status>failure</status>\r\n\t<serviceException errorCode=\"NoDataFou" +
+            "ndError\">There is no user for the requested id.</serviceException>\r\n</plusServic" +
+            "e>")]
+        public string BadRunList {
+            get {
+                return ((string)(this["BadRunList"]));
+            }
+            set {
+                this["BadRunList"] = value;
+            }
+        }
     }
 }
