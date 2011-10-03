@@ -68,14 +68,15 @@
   <ItemGroup>
     <Compile Include="Entities\Workout.cs" />
     <Compile Include="Exceptions\NikePlusException.cs" />
-    <Compile Include="WorkoutConverter.cs" />
+    <Compile Include="IXDocReader.cs" />
+    <Compile Include="WorkoutFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="WebConverter.cs" />
+    <Compile Include="WebXDocReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

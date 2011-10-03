@@ -17,9 +17,9 @@ namespace Import.NikePlus.Test
     /// </summary>
     [TestClass] 
     [TestFixture]
-    public class WebConverterTest
+    public class WebXDocReaderTest
     {
-        public WebConverterTest()
+        public WebXDocReaderTest()
         {
             //
             // TODO: Add constructor logic here
@@ -67,82 +67,63 @@ namespace Import.NikePlus.Test
         #endregion
 
         [TestMethod]
+        [TestCategory("Integration")]
+        [Category("Integration")]
         [Test]
-        public void GIVEN_Valid_Username_AND_Password_WHEN_Creating_Web_Converter_THEN_No_Exception()
+        public void GIVEN_Valid_Username_AND_Password_WHEN_Creating_Web_Reader_THEN_No_Exception()
         {
-            var converter = new WebConverter(Settings.Default.Username, Settings.Default.Password);
+            var converter = new WebXDocReader(Settings.Default.Username, Settings.Default.Password);
         }
 
         [TestMethod]
-        [Test] 
+        [Test]
+        [TestCategory("Integration")]
+        [Category("Integration")]
         [NUnit.Framework.Ignore]
         [Microsoft.VisualStudio.TestTools.UnitTesting.Ignore]
         [NUnit.Framework.ExpectedException(typeof(InvalidOperationException))]
         [Microsoft.VisualStudio.TestTools.UnitTesting.ExpectedException(typeof(InvalidOperationException))]
-        public void GIVEN_Invalid_Username_AND_Password_WHEN_Creating_Web_Converter_THEN_Exception()
+        public void GIVEN_Invalid_Username_AND_Password_WHEN_Creating_Web_Reader_THEN_Exception()
         {
-            var converter = new WebConverter("FAKE_USER_NAME", "EVEN_FAKER_PASSWORD");
+            var converter = new WebXDocReader("FAKE_USER_NAME", "EVEN_FAKER_PASSWORD");
         }
 
         [TestMethod]
-        [Test] 
-        public void GIVEN_Valid_WebConverter_WHEN_Retrieving_Workout_IDs_THEN_IDS_Retrieved()
+        [Test]
+        [TestCategory("Integration")]
+        [Category("Integration")]
+        public void GIVEN_Valid_Reader_WHEN_Retrieving_Workout_Summaries_THEN_Valid_Summaries_Retrieved()
         {
             //Arrange
-            var converter = new WebConverter(Settings.Default.Username, Settings.Default.Password);
-            //Act
-            var ids = converter.GetWorkoutIDs();
-            //Assert
-            Assert.IsNotNull(ids);
-            Assert.AreNotEqual(ids.Count(), 0);
-        }
-
-        [TestMethod]
-        [Test] 
-        public void GIVEN_Valid_WebConverter_WHEN_Retrieving_Workout_Summaries_THEN_Valid_Summaries_Retrieved()
-        {
-            //Arrange
-            var converter = new WebConverter(Settings.Default.Username, Settings.Default.Password);
+            var converter = new WebXDocReader(Settings.Default.Username, Settings.Default.Password);
             //Act
             var workouts = converter.GetWorkoutSummaries();
             //Assert
             Assert.IsNotNull(workouts);
-            Assert.AreNotEqual(workouts.Count(), 0);
-            foreach (var w in workouts)
-            { 
-                Console.Out.WriteLine("{0} [{1}] Calories: {2} Distance: {3} Time: {4}", w.ID, w.Name, w.Calories, w.Distance, new TimeSpan(w.Duration));
-            }
+            Assert.IsNotNull(workouts.Elements());
+            Assert.AreNotEqual(workouts.Elements(), 0);
         }
 
         [TestMethod]
-        [Test] 
-        public void GIVEN_List_Of_IDs_WHEN_Retrieving_By_ID_THEN_Populated_Workout_Retrieved()
+        [Test]
+        [TestCategory("Integration")]
+        [Category("Integration")]
+        public void GIVEN_Valid_Reader_WHEN_Retrieving_Workout_THEN_Valid_Workout_Retrieved()
         {
             //Arrange
-            var converter = new WebConverter(Settings.Default.Username, Settings.Default.Password);
+            var converter = new WebXDocReader(Settings.Default.Username, Settings.Default.Password);
             //Act
-            var ids = converter.GetWorkoutIDs();
-            foreach(var id in ids){
-                var w = converter.GetWorkout(id);
-                Assert.IsNotNull(w );
-                Console.Out.WriteLine("{0} [{1}] Calories: {2} Distance: {3} Time: {4}", w.ID, w.Name, w.Calories, w.Distance, new TimeSpan(w.Duration));
-                if (w.Snapshots != null)
-                {
-                    foreach (var ss in w.Snapshots)
-                    {
-                        Console.Out.WriteLine("{0} {1} {2} {3}", ss.DataType, ss.Interval, ss.IntervalType, ss.IntervalUnit);
-                        if (ss.Intervals != null)
-                        {
-                            Console.Out.WriteLine("Num of Intervals: {0}", ss.Intervals.Count());
-                        }
-                    }
-                }
+            var workouts = converter.GetWorkoutSummaries();
+
+            foreach (var run in workouts.Descendants("run"))
+            {
+                var workout = converter.GetWorkout((long)run.Attribute("id"));
+
+                //Assert
+                Assert.IsNotNull(workouts);
+                Assert.IsNotNull(workouts.Elements());
+                Assert.AreNotEqual(workouts.Elements(), 0);
             }
-
-            //Assert
-            Assert.IsNotNull(ids);
-            Assert.AreNotEqual(ids.Count(), 0);
         }
-
     }
 }

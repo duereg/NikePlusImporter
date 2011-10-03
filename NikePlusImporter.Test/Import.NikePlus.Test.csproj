@@ -93,8 +93,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="WebConverterTest.cs" />
-    <Compile Include="WorkoutConverterTest.cs" />
+    <Compile Include="TestXDocReader.cs" />
+    <Compile Include="WebXDocReaderTest.cs" />
+    <Compile Include="WorkoutFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NikePlusImporter\Import.NikePlus.csproj">

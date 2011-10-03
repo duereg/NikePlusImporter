@@ -11,77 +11,77 @@ namespace Import.NikePlus
     /// <summary>
     /// Convert NikePlus xml into a usable, strongly typed class structure
     /// </summary>
-    public class WorkoutConverter
-    {    
-        protected string FileContents{ get; set; }
-        protected XDocument NikePlusDoc { get; set; }
+    public class WorkoutFactory 
+    {
+        private IXDocReader _reader = null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FileImporter"/> class.
+        /// Initializes a new instance of the <see cref="WorkoutFactory"/> class.
         /// </summary>
-        /// <param name="fileContents">The file contents to import into the system.</param>
-        public WorkoutConverter(string fileContents)
+        /// <param name="reader">The reader to retrieve the XDocs needed by the factory.</param>
+        public WorkoutFactory(IXDocReader reader)
         {
-            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(fileContents), "The contents of the file are invalid.");
-            
-            FileContents = fileContents;
-            NikePlusDoc = XDocument.Parse(fileContents);
-            ValidateStatus(NikePlusDoc);
-        }
-
-        public WorkoutConverter(XDocument nikePlusDoc)
-        {
-            Contract.Requires(nikePlusDoc != null);
-            FileContents = nikePlusDoc.ToString();
-            NikePlusDoc = nikePlusDoc;
-            ValidateStatus(nikePlusDoc);
+            Contract.Requires<ArgumentNullException>(reader != null, "The given XDoc reader is invalid.");
+            _reader = reader;
         }
 
         /// <summary>
-        /// Gets a converted version of the workout data contained in this instance.
+        /// Gets a list of all the the workout IDs in the system.
+        /// </summary>
+        /// <returns>
+        /// a list of all the workout IDS in the system
+        /// </returns>
+        public IEnumerable<long> GetIDs()
+        {
+            return
+                from a in GetSummaries()
+                select a.ID;
+        }
+
+        /// <summary>
+        /// Retrieve a list of workouts containing detailed information about the workout.
+        /// These workouts include detailed interval / mileage / pace information.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Workout> Get()
+        public IEnumerable<Workout> GetPopulated()
         {
-            IEnumerable<Workout> workouts = null;
-
-            if (NikePlusDoc.Descendants("run").Count() > 0)
+            IEnumerable<long> workoutKeys = GetIDs();
+            foreach (var key in workoutKeys)
             {
-                workouts = GetSummaries();
+                yield return GetWorkout(key);
             }
-            else if (NikePlusDoc.Descendants("runSummary").Count() > 0)
-            {
-                var oneWorkout = new List<Workout>();
-                oneWorkout.Add(GetPopulated());
-                workouts = oneWorkout;
-            }
-            else
-            {
-                throw new InvalidOperationException("Could not determine the document type, so conversion could not continue.");
-            }
-
-            return workouts;
-        }
-
-        public IEnumerable<Workout> GetSummaries()
-        {
-            return CreateSimpleWorkouts(); 
         }
 
         /// <summary>
-        /// Converts the given file contents into a <see cref="Import.NikePlus.Entities.Workout"/> instance.
+        /// Gets a populated workout based off of its ID.
+        /// This workout includes detailed interval / mileage / pace information.
         /// </summary>
-        /// <returns>a <see cref="Import.NikePlus.Entities.Workout"/> instance.</returns>
-        public Workout GetPopulated()
+        /// <param name="id">The ID of the workout.</param>
+        /// <returns>
+        /// A Populated Workout
+        /// </returns>
+        public Workout GetWorkout(long id)
         {
-            return CreatePopulatedWorkout(); 
+            var fileContents = _reader.GetWorkout(id); 
+            return CreatePopulatedWorkout(fileContents);
         }
 
-        private Workout CreatePopulatedWorkout()
+        /// <summary>
+        ///Retrieve a collection of workout summaries.
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Workout> GetSummaries()
         {
+            return CreateSimpleWorkouts(_reader.GetWorkoutSummaries()); 
+        }
+
+        private Workout CreatePopulatedWorkout(XDocument nikePlusDoc)
+        {
+            ValidateStatus(nikePlusDoc);
+
             Workout work = new Workout{ImportedOn = DateTime.Now};
 
-            var baseElement = NikePlusDoc.Root.Element("sportsData");
+            var baseElement = nikePlusDoc.Root.Element("sportsData");
 
             if(baseElement != null){
 
@@ -123,11 +123,14 @@ namespace Import.NikePlus
             return work;
         }
          
-        private  IEnumerable<Workout> CreateSimpleWorkouts()
+        private  IEnumerable<Workout> CreateSimpleWorkouts(XDocument nikePlusDoc)
         {
-            IList<Workout> workouts = new List<Workout>(); 
+            ValidateStatus(nikePlusDoc);
 
-            foreach(var run in NikePlusDoc.Descendants("run")) {
+            IList<Workout> workouts = new List<Workout>();
+
+            foreach (var run in nikePlusDoc.Descendants("run"))
+            {
                 var workout = new Workout{ Calories= (float) run.Element("calories"), 
                                 Duration= (int)run.Element("duration"), 
                                 Distance= (float) run.Element("distance"),  

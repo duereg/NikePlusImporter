@@ -14,80 +14,49 @@ namespace Import.NikePlus
     /// <summary>
     ///  
     /// </summary>
-    public class WebConverter
+    public class WebXDocReader : IXDocReader
     {
         private CookieCollection Cookies { get; set;}
         internal static Settings Configuration = (Settings) Settings.Synchronized(Settings.Default);
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebConverter"/> class.
+        /// Initializes a new instance of the <see cref="WebXDocReader"/> class.
         /// </summary>
-        public WebConverter(string username, string password)
+        public WebXDocReader(string username, string password)
         { 
             Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(username), "username is invalid");
             Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(password), "password is invalid");
-            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(Settings.Default.AUTHENTICATION_URL), "url is invalid");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(Settings.Default.AUTHENTICATION_URL), "authentication url is invalid");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(Settings.Default.GET_WORKOUT_DETAILS_URL), "workout details url is invalid");
+            Contract.Requires<ArgumentNullException>(!string.IsNullOrWhiteSpace(Settings.Default.GET_WORKOUTS_LIST_URL), "workout list url is invalid");
 
             Cookies = Authenticate(username, password);
         }
 
         /// <summary>
-        /// Converts the specified information into a list of workouts.
-        /// </summary>
-        /// <param name="username">The username.</param>
-        /// <param name="password">The password.</param>
-        /// <param name="url">The URL.</param>
-        /// <returns></returns>
-        public IEnumerable<Workout> GetPopulatedWorkouts()
-        {
-            IEnumerable<long> workoutKeys = GetWorkoutIDs();
-            foreach (var key in workoutKeys)
-            {
-                yield return GetWorkout(key);
-            }
-        }
-
-        /// <summary>
-        /// Gets a populated workout based off of its ID.
-        /// </summary>
-        /// <param name="id">The ID of the workout.</param>
-        /// <returns>A Populated Workout</returns>
-        public Workout GetWorkout(long id)
-        {
-            var fileContents = GetWorkoutXml(id);
-            var xmlConverter = new WorkoutConverter(fileContents);
-            return xmlConverter.GetPopulated();
-        }
-
-        /// <summary>
-        /// Gets the workout summaries. The have the basic workout information but none of detailed interval / mileage /pace information included.
+        /// Retrieve workout summaries. 
+        /// They have the basic workout information but none of detailed interval / mileage /pace information included.
         /// </summary>
         /// <returns>A list of workout summaries</returns>
-        public IEnumerable<Workout> GetWorkoutSummaries()
-        {
-            var xmlDoc = GetWorkouts();
-            var xmlConverter = new WorkoutConverter(xmlDoc);
-            return xmlConverter.GetSummaries();
+        public XDocument GetWorkoutSummaries()
+        { 
+            var request = WebRequest.Create(Configuration.GET_WORKOUTS_LIST_URL) as HttpWebRequest;
+            var container = new CookieContainer();
+            container.Add(Cookies);
+            request.CookieContainer = container;
+            return GetXDocument(request);
         }
 
         /// <summary>
-        /// Gets a list of all the the workout IDs in the system.
+        /// Get a workout based off of the workout ID. 
+        /// These workouts include detailed interval / mileage /pace information.
         /// </summary>
-        /// <returns>a list of all the workout IDS in the system</returns>
-        public IEnumerable<long> GetWorkoutIDs()
+        /// <param name="key">The key.</param>
+        /// <returns></returns>
+        public XDocument GetWorkout(long key)
         {
-            Contract.Requires<ArgumentNullException>(Cookies != null, "Cookie Collection is invalid");
-
-            var xmlDoc = GetWorkouts();
-            var xmlConverter = new WorkoutConverter(xmlDoc);
-
-            return
-                from a in xmlConverter.GetSummaries()
-                select a.ID;
-        }
-
-        private XDocument GetWorkouts()
-        { 
-            var request = WebRequest.Create(Configuration.GET_WORKOUTS_LIST_URL) as HttpWebRequest;
+            var url = string.Format(Configuration.GET_WORKOUT_DETAILS_URL, key);
+            var request = WebRequest.Create(url) as HttpWebRequest;
             var container = new CookieContainer();
             container.Add(Cookies);
             request.CookieContainer = container;
@@ -110,16 +79,6 @@ namespace Import.NikePlus
             }
 
             return retCookies;
-        }
-
-        private XDocument GetWorkoutXml(long key)
-        {
-            var url = string.Format(Configuration.GET_WORKOUT_DETAILS_URL, key);
-            var request = WebRequest.Create(url) as HttpWebRequest;
-            var container = new CookieContainer();
-            container.Add(Cookies);
-            request.CookieContainer = container;
-            return GetXDocument(request);
         }
          
         /// <summary>
